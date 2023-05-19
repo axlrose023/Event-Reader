@@ -1,0 +1,62 @@
+{% load static %}
+<div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <img src="{% static 'event_viewer/img/udo_logo.png' %}" alt="logo" width="60" height="60">
+                    </a>
+                </div>
+            </nav>
+            <a class="navbar-brand" href="{% url 'eventlog_reader' %}">Events</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.path == "/" %} active {% endif %}" aria-current="page" href="/">Event
+                            Viewer</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == "success_events" %} active {% endif %}"
+                           aria-current="page"
+                           href="{% url 'filter_events_success' %}">Code 4624</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == "failure_events" %} active {% endif %}"
+                           href="{% url 'filter_events_failure' %}">Code 4625</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-success" href="{% url 'download_csv' %}">Завантажити CSV</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+                <div class="d-flex justify-content-end mb-3 mb-lg-0">
+                     {% if user.is_authenticated %}
+                        <div class="widget-header">
+                            <h6 class="title text-muted">Користувач: {{ user.username }}</h6>
+                            <div>
+                                <a class="btn btn-success" href="{% url 'logout' %}">Вийти</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="widget-header">
+
+                            <div>
+                                <a class="btn btn-success" href="{% url 'login' %}">Увійти</a>
+
+                            </div>
+                        </div>
+                    {% endif %}
+
+
+                </div> <!-- widgets-wrap.// -->
+            </div> <!-- col.// -->
+        </div>
+    </nav>
+</div>

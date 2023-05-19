@@ -1,0 +1,13 @@
+{% load static %}
+<header>
+    <link rel="stylesheet" href="{% static 'event_viewer/css/style.css' %}">
+</header>
+<div style="display: flex;">
+    <img class="thumb-image loaded" src="{% static 'event_viewer/img/crying.jpeg' %}" alt="Error">
+    <div style="margin-left: 150px; margin-top: 200px;">
+        <h1>Awwww......Don't Cry.</h1>
+
+        <p style="font-size: large">It's just an error <b>400</b>.</p>
+        <a href="{% url 'home' %}" class="button-53" role="button">Повернутись</a>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if page_obj %}
+
+        <div class="container">
+            <p>Кількість Подій: {{ total }}</p>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Computer</th>
+                    <th scope="col">Event Category</th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Record</th>
+                    <th scope="col">Event Type</th>
+                    <th scope="col">Info</th>
+                </tr>
+                </thead>
+                {% for event in page_obj %}
+                    <tbody>
+
+
+                    <th scope="row">{{ event.etv_id }}</th>
+                    <th scope="row">{{ event.the_time }}</th>
+                    <th scope="row">{{ event.computer_name }}</th>
+                    <th scope="row">{{ event.category }}</th>
+                    <th scope="row">{{ event.user_name }}</th>
+                    <th scope="row">{{ event.source }}</th>
+                    <th scope="row">{{ event.record }}</th>
+                    <th scope="row">{{ event.event_type }}</th>
+                    <th scope="row">{{ event.message }}</th>
+
+
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    {% else %}
+        <h1 style="text-align: center">There is no events</h1>
+    {% endif %}
+
+{% endblock %}

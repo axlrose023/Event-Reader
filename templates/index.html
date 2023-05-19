@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container" style="text-align: center; margin-bottom: 100px; margin-top: 100px">
+        <img src="{% static 'event_viewer/img/udo_logo.png' %}" class="rounded mx-auto d-block" alt="udo_logo" style="width: 300px">
+
+        <br>
+        <form action="{% url 'filtering_events' %}" method="get">
+
+
+            <div class="input-group mb-3" style="text-align: center; margin-left: 350px; width: 600px">
+                <input type="text" class="form-control" name="computer" placeholder="Комп'ютер"
+                       aria-label="Computer">
+
+            </div>
+            <div class="input-group mb-3" style="width: 600px; margin-left: 350px">
+                <input type="text" class="form-control" name="username" placeholder="Користувач" aria-label="Username">
+            </div>
+
+            <div class="input-group mb-3" style="width: 600px; margin-left: 350px">
+                <input type="text" class="form-control" name="event_id" placeholder="ID Події" aria-label="Username">
+            </div>
+
+            <select class="form-select" name="timing" aria-label="Default select example" style="width: 600px; margin-left: 350px;">
+                <option selected>Виберіть час отримання подій</option>
+                <option value="8_hours">8 годин</option>
+                <option value="one_day">День</option>
+                <option value="week">Тиждень</option>
+                <option value="month">Місяць</option>
+                <option value="all_period">За весь період</option>
+            </select>
+            <br>
+            <button class="btn btn-outline-success" type="submit">Пошук</button>
+        </form>
+    </div>
+
+{% endblock %}
